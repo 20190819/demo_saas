@@ -43,13 +43,11 @@ export default {
   background-color: #e9eef3;
   color: #333;
   text-align: left;
-  line-height: 200px;
 }
 
 .el-main {
   color: #333;
   text-align: center;
-  line-height: 160px;
 }
 .el-container {
   height: 100%;

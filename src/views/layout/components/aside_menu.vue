@@ -17,11 +17,11 @@
         <i class="el-icon-setting"></i>
         <span slot="title">首页</span>
       </el-menu-item>
-      <el-menu-item index="/article">
+      <el-menu-item index="/cars">
         <i class="el-icon-document"></i>
         <span slot="title">车牌归属地</span>
       </el-menu-item>
-      <el-menu-item index="/material">
+      <el-menu-item index="/colleges">
         <i class="el-icon-picture-outline"></i>
         <span slot="title">院校查询</span>
       </el-menu-item>
@@ -81,6 +81,7 @@ export default {
 }
 .nav-bars {
   height: 100%;
+  background-color: #002033;
   .el-menu {
     border-right: 0;
     height: 90%;

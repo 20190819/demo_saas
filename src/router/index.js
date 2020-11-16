@@ -3,7 +3,8 @@ import VueRouter from "vue-router";
 import Login from "@/views/login";
 import Layout from "@/views/layout";
 import Home from "@/views/home";
-import Article from "@/views/article";
+import Cars from "@/views/cars";
+import Colleges from "@/views/colleges";
 
 Vue.use(VueRouter);
 
@@ -23,9 +24,14 @@ const routes = [
         component: Home
       },
       {
-        path: "/article",
-        name: "Article",
-        component: Article
+        path: "/cars",
+        name: "Cars",
+        component: Cars
+      },
+      {
+        path: "/colleges",
+        name: "Colleges",
+        component: Colleges
       }
     ]
   }
