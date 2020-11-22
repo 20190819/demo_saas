@@ -4,12 +4,16 @@
       <div class="form-header"><div id="header"></div></div>
       <el-form ref="form" :model="form" :rules="rules" v-loading="loading">
         <el-form-item prop="username">
-          <el-input v-model="form.username" placeholder="请输入用户名">
+          <el-input v-model="form.email" placeholder="请输入用户名">
             <i slot="prefix" class="el-input__icon el-icon-user-solid"></i>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="form.password" placeholder="请输入密码">
+          <el-input
+            type="password"
+            v-model="form.password"
+            placeholder="请输入密码"
+          >
             <i
               slot="prefix"
               class="el-input__icon el-icon-s-tools
@@ -33,25 +37,22 @@
 </template>
 
 <script>
-import { login } from "@/api/user";
+import { login } from "@/api/auth";
 export default {
   data() {
     return {
       form: {
-        username: "",
-        password: "",
-        agree: false
+        email: "1034211002@qq.com",
+        password: 111111,
+        agree: true
       },
       loading: false,
       rules: {
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
-        ],
+        email: [{ required: true, message: "请输入用户名", trigger: "blur" }],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
         agree: [
           {
             validator: (rule, value, callback) => {
-              console.log("validator", value);
               if (!value) {
                 return callback(new Error("请遵守我们的规则"));
               } else {
@@ -68,18 +69,22 @@ export default {
     onSubmit() {
       this.$refs.form.validate(valid => {
         if (valid) {
-          this.login();
+          login(this.form).then(res => {
+            if (res.data.code == 0) {
+              window.localStorage.setItem(
+                "token",
+                JSON.stringify(res.data.data)
+              );
+              this.$nextTick(() => {
+                this.$message.success(res.data.msg);
+                this.$router.push("/");
+              });
+            }
+          });
         } else {
           return false;
         }
       });
-    },
-    login() {
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-        this.$message.success("登陆成功...");
-      }, 2000);
     }
   }
 };

@@ -42,15 +42,16 @@ const router = new VueRouter({
 });
 
 // 导航守卫
-const user = JSON.parse(window.localStorage.getItem("user"));
+const token = window.localStorage.getItem("token");
 
-// router.beforeEach((to, from, next) => {
-//   // 未登录
-//   if (to.name !== "Login" && !user) {
-//     next({ name: "Login" });
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  // 未登录
+  console.log("to",to,token);
+  if (to.name !== "Login" && !token) {
+    next({ name: "Login" });
+  } else {
+    next();
+  }
+});
 
 export default router;

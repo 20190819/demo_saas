@@ -33,14 +33,6 @@
         <i class="el-icon-s-comment"></i>
         <span slot="title">自定义表单</span>
       </el-menu-item>
-      <el-menu-item index="/fans">
-        <i class="el-icon-share"></i>
-        <span slot="title">粉丝管理</span>
-      </el-menu-item>
-      <el-menu-item index="/setting">
-        <i class="el-icon-setting"></i>
-        <span slot="title">个人设置</span>
-      </el-menu-item>
     </el-menu>
   </div>
 </template>
